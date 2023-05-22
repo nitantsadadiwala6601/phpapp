@@ -1,5 +1,4 @@
 <?php
-require_once realpath(__DIR__ . '/vendor/autoload.php');
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -11,5 +10,5 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 	
-echo "Connected successfully";		
+echo "DB Connected successfully";		
 ?>
