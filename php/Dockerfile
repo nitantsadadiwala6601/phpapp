@@ -5,6 +5,3 @@ RUN apk update; \
     apk upgrade;
 
 RUN docker-php-ext-install mysqli
-
-COPY src /var/www/
-RUN chown -R www-data:www-data /var/www
