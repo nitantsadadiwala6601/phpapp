@@ -5,6 +5,8 @@ services:
       context: './php/'
       args:
        PHP_VERSION: ${PHP_VERSION}
+    volumes:
+      - ./src:/var/www
     container_name: php
   apache:
     build:
@@ -16,12 +18,16 @@ services:
       - mariadb
     ports:
       - "80:80"
+    volumes:
+      - ./src:/var/www
     container_name: apache
   mariadb:
     image: mariadb:${MARIADB_VERSION:-latest}
     restart: always
     ports:
       - "3306:3306"
+    volumes:
+            - ./src:/var/www
     environment:
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
       MYSQL_DATABASE: "${DB_NAME}"
