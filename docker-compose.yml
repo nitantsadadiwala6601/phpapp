@@ -17,7 +17,7 @@ services:
       - php
       - mariadb
     ports:
-      - "80:80"
+      - "8080:8080"
     # volumes:
     #   - ${PROJECT_ROOT}/:/var/www/html/
     container_name: apache
