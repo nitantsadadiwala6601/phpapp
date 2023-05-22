@@ -1,36 +1,41 @@
 version: "3.8"
 services:
   php:
-    build: 
+    build:
       context: './php/'
       args:
-       PHP_VERSION: ${PHP_VERSION}
-    # volumes:
-    #   - ${PROJECT_ROOT}/:/var/www/html/
+        PHP_VERSION: ${PHP_VERSION}
+    volumes:
+      - ./Apis:/var/www/html/
     container_name: php
+  
   apache:
     build:
       context: './apache/'
       args:
-       APACHE_VERSION: ${APACHE_VERSION}
+        APACHE_VERSION: ${APACHE_VERSION}
     depends_on:
       - php
       - mariadb
     ports:
-      - "8080:8080"
-    # volumes:
-    #   - ${PROJECT_ROOT}/:/var/www/html/
+      - "8080:80"
+    volumes:
+      - ./Apis:/var/www/html/
     container_name: apache
+  
   mariadb:
     image: mariadb:${MARIADB_VERSION:-latest}
     restart: always
     ports:
       - "3306:3306"
-    # volumes:
-    #         - data:/var/lib/mysql
+    volumes:
+      - data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
-      MYSQL_DATABASE: "${DB_NAME}"
-      MYSQL_USER: "${DB_USERNAME}"
-      MYSQL_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "php_app_db"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "root"
     container_name: mariadb
+
+volumes:
+  data:
