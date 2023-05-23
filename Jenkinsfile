@@ -4,25 +4,25 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo docker-compose build'
+                bat 'docker-compose build'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'docker-compose run --rm app phpunit'
+                bat 'docker-compose run --rm app phpunit'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker-compose up -d'
+                bat 'docker-compose up -d'
             }
         }
 
         stage('Cleanup') {
             steps {
-                sh 'docker-compose down'
+                bat 'docker-compose down'
             }
         }
     }
