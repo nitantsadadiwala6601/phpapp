@@ -1,19 +1,29 @@
 version: '3'
 services:
-  php-environment:
-    container_name: php-apache
+  php:
+    build: 
+      context: './php/'
+      args:
+       PHP_VERSION: ${PHP_VERSION}
+    # volumes:
+    #   - ${PROJECT_ROOT}/:/var/www/html/
+    container_name: php
+  apache:
     build:
-      context: ./php
-      dockerfile: Dockerfile
+      context: './apache/'
+      args:
+       APACHE_VERSION: ${APACHE_VERSION}
     depends_on:
       - db
     volumes:
       - ./php:/var/www/html/
     ports:
-      - 8000:80
-  db:
-    container_name: db
-    image: mysql
+      - "8080:8080"
+    # volumes:
+    #   - ${PROJECT_ROOT}/:/var/www/html/
+    container_name: apache
+  mariadb:
+    image: mariadb:${MARIADB_VERSION:-latest}
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ROOT_PASSWORD
@@ -21,14 +31,12 @@ services:
       MYSQL_USER: USER
       MYSQL_PASSWORD: PASS
     ports:
-      - "9906:3306"
-  phpmyadmin:
-    image: phpmyadmin
-    container_name: phpmyadmin
-    links:
-      - db
+      - "3306:3306"
+    # volumes:
+    #         - data:/var/lib/mysql
     environment:
-      PMA_HOST: db
-    restart: always
-    ports:
-      - 8081:80
+      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${DB_NAME}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+    container_name: mariadb

@@ -1,3 +1,7 @@
-FROM php:8.0-apache
-RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
-RUN apt-get update && apt-get upgrade -y
+ARG PHP_VERSION=""
+FROM php:${PHP_VERSION:+${PHP_VERSION}-}fpm-alpine
+
+RUN apk update; \
+    apk upgrade;
+
+RUN docker-php-ext-install mysqli
