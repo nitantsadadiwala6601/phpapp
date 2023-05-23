@@ -1,6 +1,6 @@
 <?php
-//$host= 'mariadb';
-$host='localhost';
+$host= 'mariadb';
+// $host='localhost';
 $user= 'root';
 $pass='root';
 
