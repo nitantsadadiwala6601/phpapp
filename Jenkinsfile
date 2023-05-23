@@ -11,7 +11,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                 bat "docker-compose run --rm php-environment phpunit"
+                 bat "docker-compose run --rm php phpunit"
             }
         }
 
