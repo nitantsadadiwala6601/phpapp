@@ -24,9 +24,9 @@ services:
       - "9906:3306"
   phpunit:
       image: php:8.0
-      restart: never
+      restart: always
       volumes:
-        - .:/php
+        - ./php:/php
       working_dir: /php
       entrypoint: vendor/bin/phpunit
   # phpmyadmin:
