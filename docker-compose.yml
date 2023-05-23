@@ -22,20 +22,3 @@ services:
       MYSQL_PASSWORD: root
     ports:
       - "9906:3306"
-  phpunit:
-      image: php:8.0
-      restart: always
-      volumes:
-        - ./php:/php
-      working_dir: /php
-      entrypoint: vendor/bin/phpunit
-  # phpmyadmin:
-  #   image: phpmyadmin
-  #   container_name: phpmyadmin
-  #   links:
-  #     - mariadb
-  #   environment:
-  #     PMA_HOST: mariadb
-  #   restart: always
-  #   ports:
-  #     - 8081:80
