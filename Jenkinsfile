@@ -10,7 +10,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'docker-compose run --rm app phpunit'
+                bat 'docker-compose run --rm phpapp phpunit'
             }
         }
 
