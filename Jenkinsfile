@@ -9,11 +9,11 @@ pipeline {
             }
         }
 
-        // stage('Test') {
-        //     steps {
-        //          bat "docker-compose run --rm php-environment phpunit"
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                 bat "docker-compose run --rm php-environment phpunit"
+            }
+        }
 
         stage('Deploy') {
             steps {
