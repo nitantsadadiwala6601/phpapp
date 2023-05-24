@@ -11,7 +11,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'phpunit --log-junit test-results.xml'
+                bat 'phpunit --log-junit test-results.xml'
             }
             post {
                 always {
