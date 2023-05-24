@@ -1,6 +1,6 @@
 <?php
 $host= 'mariadb';
-// $host='localhost';
+//$host='localhost';
 $user= 'root';
 $pass='root';
 
@@ -12,4 +12,4 @@ if ($conn->connect_error) {
    header("Location: frontend/form/home.html");
    exit;
 }
-?>
+?>          
