@@ -9,6 +9,7 @@ services:
       - mariadb
     volumes:
       - ./php:/var/www/html/
+      - ./tests:/var/www/html/tests
     ports:
       - 8000:80
   mariadb:
