@@ -14,13 +14,6 @@ pipeline {
                 bat 'composer update'
                 bat 'vendor/bin/phpunit'
                 bat "docker-compose run --rm php-environment phpunit"
-                bat 'phpunit --log-junit test-results.xml'
-            }
-            post {
-                always {
-                    junit 'test-results.xml'
-                }
-            }
         }
 
         stage('Deploy') {
