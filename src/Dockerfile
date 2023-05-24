@@ -11,5 +11,6 @@ RUN apt-get update && \
     wget https://phar.phpunit.de/phpunit-9.phar -O /usr/local/bin/phpunit && \
     chmod +x /usr/local/bin/phpunit
 WORKDIR /var/www/html
+RUN echo phpunit --version
 # ENTRYPOINT [ "./vendor/bin/phpunit" ] 
 RUN apt-get update && apt-get upgrade -y
