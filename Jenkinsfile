@@ -15,7 +15,7 @@ pipeline {
                 bat 'vendor/bin/phpunit'
                 bat "docker-compose run --rm php-environment phpunit"
         }
-
+        }
         stage('Deploy') {
             steps {
                 bat "docker-compose up -d"
