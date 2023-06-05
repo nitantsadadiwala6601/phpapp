@@ -11,7 +11,6 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'composer self-update --2'
                 sh 'composer install'
                 sh 'composer update'
                 sh 'vendor/bin/phpunit'
