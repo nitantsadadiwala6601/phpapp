@@ -4,27 +4,27 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat "docker-compose build"
+                sh "docker-compose build"
                 echo "Step 1 Build complete"
             }
         }
 
         stage('Test') {
             steps {
-                bat 'composer update'
-                bat 'vendor/bin/phpunit'
-                bat "docker-compose run --rm php-environment phpunit"
+                sh 'composer update'
+                sh 'vendor/bin/phpunit'
+                sh "docker-compose run --rm php-environment phpunit"
         }
         }
         stage('Deploy') {
             steps {
-                bat "docker-compose up -d"
+                sh "docker-compose up -d"
             }
         }
 
         stage('Cleanup') {
             steps {
-                bat "docker-compose down"
+                sh "docker-compose down"
             }
         }
     }
