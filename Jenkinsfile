@@ -11,7 +11,6 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'composer require --dev phpunit/phpunit ^9'
                 sh 'composer update'
                 sh 'vendor/bin/phpunit'
                 sh "docker-compose run --rm php-environment phpunit"
