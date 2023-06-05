@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "service docker start"
                 sh "docker-compose build"
                 echo "Step 1 Build complete"
             }
