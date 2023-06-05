@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh "export DOCKER_HOST=tcp://172.17.14.48:2375"
                 sh "docker-compose build"
                 echo "Step 1 Build complete"
             }
