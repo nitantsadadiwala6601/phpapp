@@ -1,4 +1,5 @@
 <?php
+session_start();
 $host= 'mariadb';
 //$host='localhost';
 $user= 'root';
@@ -9,7 +10,7 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 } else {
    echo "Connected to MySQL server successfully!";
-   header("Location: frontend/form/home.html");
+   header("Location: ./frontend/form/home.html");
    exit;
 }
 ?>          

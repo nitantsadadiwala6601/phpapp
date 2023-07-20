@@ -5,6 +5,7 @@ RUN apt-get update && \
     wget https://getcomposer.org/installer -O /tmp/composer-setup.php && \
     php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
     rm /tmp/composer-setup.php
+COPY . /var/www/html
 RUN composer self-update --2
 RUN apt-get update && \
     apt-get install -y wget && \
